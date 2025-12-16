@@ -227,11 +227,11 @@ impl ContourSet {
             max_verts_per_cont = max_verts_per_cont.max(contour.vertices.len());
         }
 
-        if max_vertices > u16::MAX as usize {
+        if max_vertices > u32::MAX as usize {
             // Jan: Is this sensible? It's the original, but I suspect u32 is fine
             return Err(PolygonNavmeshError::TooManyVertices {
                 actual: max_vertices,
-                max: u16::MAX as usize,
+                max: u32::MAX as usize,
             });
         }
 
